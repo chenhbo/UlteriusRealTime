@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.705
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UlteriusRealTime", "UlteriusRealTime\UlteriusRealTime.csproj", "{61E187C7-0CCA-46A3-AB10-DFD9ED994FFA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61E187C7-0CCA-46A3-AB10-DFD9ED994FFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E187C7-0CCA-46A3-AB10-DFD9ED994FFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E187C7-0CCA-46A3-AB10-DFD9ED994FFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E187C7-0CCA-46A3-AB10-DFD9ED994FFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {316914D5-7167-499E-BF8E-4802A5CE5AD9}
+	EndGlobalSection
+EndGlobal

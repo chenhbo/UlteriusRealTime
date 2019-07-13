@@ -51,15 +51,11 @@ namespace UlteriusRealTime
 
             // Set callback
             UlteriusLib.Ulterius.Singleton.setCallback(newFrame);
-            //UlteriusLib.Ulterius.Singleton.setCallback(Ulterius.Singleton.Callback(ulteriusDataDesc, buffer,UlteriusLib.UlteriusDataType.udtBPre,10,1));
-            //UlteriusLib.Ulterius.Singleton.setParamCallback(UlteriusLib.Ulterius.Singleton.ParamCallback);
 
-            int sel = -1; int i = -1;
             // do something
 
-
             // 
-            //delegateUIRefresh(); // 之后把更新时间绑定到该托管
+            //delegateUIRefresh(); // 之后把更新UI绑定到该托管
         }
 
         public void ToggleFreeze()
@@ -67,7 +63,6 @@ namespace UlteriusRealTime
             //Ulterius.Singleton.toggleFreeze();
             //Console.WriteLine("Toggle Freeze");
             MessageBox.Show("ToggleFreeze");
-            // 当窗体按下时，获取当前Freeze状态，根据状态设置Button Color
             
         }
     }

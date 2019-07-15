@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenCvSharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UlteriusLib;
+using Ultrasonic3DReconstructor;
 
 namespace UlteriusRealTime
 {
@@ -20,9 +22,7 @@ namespace UlteriusRealTime
         [DllImport("kernel32.dll")]
         public static extern bool AllocConsole();
 
-        // define managed types to instantiation a event
-        public delegate void DelegateButtonClick();
-        public static event DelegateButtonClick ButtonFreeze;
+
 
         // 定义托管类型，
         delegate void SetTextCallBack(string text);
@@ -71,15 +71,9 @@ namespace UlteriusRealTime
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DataAcquire dataAcquire = new DataAcquire();
-            //dataAcquire.delegateUIRefresh += RefreshUI;     // 将更新UI的事件绑定到该托管
 
-            Thread dataThread = new Thread(dataAcquire.GetData);
 
-            dataThread.Start();
-            Console.WriteLine("Data acquire thread running...");
-
-            string input = "10.19.127.204"; //Use machine IP
+            string input = "10.19.127.125"; //Use machine IP
 
             // Connect the machine
             if (!UlteriusLib.Ulterius.Singleton.connect(input))
@@ -103,8 +97,16 @@ namespace UlteriusRealTime
             // Set data type to acquire
             if (Ulterius.Singleton.setDataToAcquire(UlteriusDataType.udtBPost))
             {
-                Console.WriteLine("Set b8 Type successfully!");
+                Console.WriteLine("Set b8 Type successfully!\n");
             }
+
+            DataAcquire dataAcquire = new DataAcquire();
+            //dataAcquire.delegateUIRefresh += RefreshUI;     // 将更新UI的事件绑定到该托管
+
+            Thread dataThread = new Thread(dataAcquire.GetData);
+
+            dataThread.Start();
+            Console.WriteLine("Data acquire thread running...");
 
         }
 
@@ -112,14 +114,40 @@ namespace UlteriusRealTime
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            RefreshUI();
+
+            DataAcquire.ButtonFreeze += RefreshUI;
+            //RefreshUI();
+
         }
 
-
+        //public const long BUFFERSIZE = 640 * 480;
+        //public static byte[] gBuffer = new byte[BUFFERSIZE];
         public void RefreshUI()
         {
-            Image imageShow = byteArrayToImage(DataAcquire.gBuffer);
-            pictureBox.Image = imageShow;
+            // 初始化gBuffer
+            //int index = 0;
+            //for (int i = 0; i < 480; i++)
+            //{
+            //    for (int j = 0; j < 640; j++)
+            //    {
+            //        gBuffer[index++] = 1;
+            //    }
+            //}
+            //byte[] array = binaryReader.ReadBytes(arraySize);
+            int arraySize = 480*640;
+            byte[,] array2 = new byte[480, 640];
+            //将一维数组转换为二维数组
+            for (int j = 0; j < arraySize; j++)
+            {
+                array2[j / 640, j % 640] = DataAcquire.gBuffer[j];
+            }
+
+            Mat srcG = ConvertFile.ArrayToMat(array2);
+            Mat dstG = new Mat();
+            Cv2.ApplyColorMap(srcG, dstG, ColormapTypes.Jet);
+
+            Bitmap bitmapG = ConvertFile.MatToBitmap(dstG);
+            pictureBox.Image = bitmapG;
         }
 
         /// <summary>
@@ -143,6 +171,7 @@ namespace UlteriusRealTime
         /// <returns></returns>
         public static Image byteArrayToImage(byte[] byteArrayIn)
         {
+
             using (MemoryStream mStream = new MemoryStream(byteArrayIn))
             {
                 return Image.FromStream(mStream);

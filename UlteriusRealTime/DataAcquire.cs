@@ -12,14 +12,16 @@ namespace UlteriusRealTime
     {
         // static buff to get data and display
         public const int EXIT_FN = 0;
-        public const long BUFFERSIZE = 4 * 1024 * 1024;
+        public const long BUFFERSIZE = 640 * 480;
         public static byte[] gBuffer = new byte[BUFFERSIZE];
 
         // define delegate of UI refresh
         public delegate void DelegateUIRefresh();
         public DelegateUIRefresh delegateUIRefresh;
 
-        // 
+        // define managed types to instantiation a event
+        public delegate void DelegateButtonClick();
+        public static event DelegateButtonClick ButtonFreeze;
 
         public static bool newFrame(UlteriusDataDesc desc, byte[] buff, UlteriusDataType type, int cine, int frmnum)
         {
@@ -30,22 +32,47 @@ namespace UlteriusRealTime
             }
 
             // ss: data sample size in bits
-            Console.WriteLine("-> {0} frame, type: {1}, size: {2}", frmnum, type, desc.ss);
-            Console.WriteLine("Image w: {0}, Image h: {1}", desc.w, desc.h);
-            Console.WriteLine();
-
+            //Console.WriteLine("-> {0} frame, type: {1}, size: {2}", frmnum, type, desc.ss);
+            //Console.WriteLine("Image w: {0}, Image h: {1}", desc.w, desc.h);
+            //Console.WriteLine(buff.Length);
+            //Console.WriteLine();
+            //int index = 0;
+            //for (int i = 0; i < 480; i++)
+            //{
+            //    for (int j = 0; j < 640; j++)
+            //    {
+            //        Console.Write(buff[index++]);
+            //    }
+            //    Console.WriteLine();
+            //}
             Array.Copy(buff, gBuffer, buff.Length);
+
+            // Raise the event myButtonClick
+            if (ButtonFreeze != null)
+            {
+                ButtonFreeze();
+            }
 
             return true;
         }
 
         public void GetData()
         {
-            Console.WriteLine(" Come in data acquire thread！");
+            // 初始化gBuffer
+            int index = 0;
+            for (int i = 0; i < 480; i++)
+            {
+                for (int j = 0; j < 640; j++)
+                {
+                    gBuffer[index++] = 0;
+                }
+            }
 
-            Form1.ButtonFreeze += ToggleFreeze; // 将翻转Freeze操作绑定到BUttonFreeze
+            Console.WriteLine("Come in data acquire thread！\n");
 
-            string input = "10.19.127.204"; //Use machine IP
+            //Form1.ButtonFreeze += ToggleFreeze; // 将翻转Freeze操作绑定到BUttonFreeze
+
+            string input = "10.19.127.125"; //Use machine IP
 
             //UlteriusDataDesc ulteriusDataDesc = new UlteriusDataDesc();
 

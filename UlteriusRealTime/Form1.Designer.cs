@@ -39,11 +39,10 @@
             // buttonStart
             // 
             this.buttonStart.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonStart.Location = new System.Drawing.Point(595, 725);
-            this.buttonStart.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonStart.Location = new System.Drawing.Point(793, 967);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.buttonStart.Size = new System.Drawing.Size(169, 85);
+            this.buttonStart.Size = new System.Drawing.Size(225, 113);
             this.buttonStart.TabIndex = 1;
             this.buttonStart.Text = "START";
             this.buttonStart.UseVisualStyleBackColor = true;
@@ -51,10 +50,10 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(271, 87);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox.Location = new System.Drawing.Point(361, 116);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(873, 618);
+            this.pictureBox.Size = new System.Drawing.Size(1164, 824);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
             // 
@@ -62,10 +61,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(572, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(763, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 24);
+            this.label1.Size = new System.Drawing.Size(253, 33);
             this.label1.TabIndex = 4;
             this.label1.Text = "Real time Show";
             // 
@@ -75,9 +73,10 @@
             this.buttonFreeze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFreeze.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonFreeze.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonFreeze.Location = new System.Drawing.Point(37, 709);
+            this.buttonFreeze.Location = new System.Drawing.Point(49, 945);
+            this.buttonFreeze.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonFreeze.Name = "buttonFreeze";
-            this.buttonFreeze.Size = new System.Drawing.Size(123, 101);
+            this.buttonFreeze.Size = new System.Drawing.Size(164, 135);
             this.buttonFreeze.TabIndex = 5;
             this.buttonFreeze.Text = "ToggleFreeze";
             this.buttonFreeze.UseVisualStyleBackColor = false;
@@ -86,9 +85,10 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(37, 27);
+            this.button2.Location = new System.Drawing.Point(49, 36);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(139, 70);
+            this.button2.Size = new System.Drawing.Size(185, 93);
             this.button2.TabIndex = 6;
             this.button2.Text = "Connect";
             this.button2.UseVisualStyleBackColor = true;
@@ -96,16 +96,16 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1392, 863);
+            this.ClientSize = new System.Drawing.Size(1856, 1151);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonFreeze);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.buttonStart);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
